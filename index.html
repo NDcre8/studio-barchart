@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
-            background-color: #333;
+            background-color: #2C2C2C;
             color: #F7F7F7;
             font-family: 'Metropolis', sans-serif;
         }
@@ -21,57 +22,75 @@
 
         .chart-container {
             display: flex;
-            justify-content: center; 
-            align-items: center;      
-            flex-direction: column;   
-            padding: 20px;           
-            width: 100%;    
-            max-width: 800px;  
-            margin: auto;    
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            width: 100%;
+            max-width: 800px;
+            margin: auto;
         }
 
         #myChart {
-            width: 100%;         
-            height: 300px;      
+            width: 100%;
+            height: 250px;
         }
 
         .slider-container {
-            text-align: center;
+            text-align: center; /* Center text */
             margin: 40px;
         }
 
         input[type="range"] {
-            -webkit-appearance: none;
-            width: 300px;
-            height: 10px;
-            background: #505050;
-            border-radius: 5px;
-            outline: none;
-            transition: background 0.3s ease;
+            -webkit-appearance: none; 
+            width: 300px; 
+            height: 10px; 
+            background: #505050; 
+            border-radius: 5px; 
+            outline: none; 
+            transition: background 0.3s ease; 
         }
 
         input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            background: #009159;
-            border-radius: 50%;
-            cursor: pointer;
+            -webkit-appearance: none; 
+            appearance: none; 
+            width: 20px; 
+            height: 20px; 
+            background: #009159; 
+            border-radius: 50%; 
+            cursor: pointer; 
         }
 
         input[type="range"]::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
-            background: #009159;
-            border-radius: 50%;
-            cursor: pointer;
+            width: 20px; 
+            height: 20px; 
+            background: #009159; 
+            border-radius: 50%; 
+            cursor: pointer; 
+        }
+
+        .budget-display {
+            width: 60px; /* Set a fixed width */
+            margin: 20px auto; /* Center horizontally using auto margins */
+            background-color: #505050; /* Black background */
+            color: #F7F7F7; /* White text */
+            padding: 5px; /* Padding for inner spacing */
+            text-align: center; /* Center the text inside the box */
+            border-radius: 5px; /* Rounded corners */
+            display: block; /* Ensures the budget-display is treated as block */
         }
 
         #totalDays {
-            text-align: center;
-            color: #F7F7F7;
-            margin-top: 20px;
+            width: 140px; /* Set a fixed width */
+            margin: 10px auto; /* Center horizontally using auto margins */
+            background-color: #242424; /* Black background */
+            color: #009159; /* Green text */
+            font-size: 18px; /* Change this to your desired font size */
+            font-weight: bold; /* Set font weight to bold */
+            padding: 10px; /* Padding for inner spacing */
+            text-align: center; /* Center the text inside the box */
+            border-radius: 5px; /* Rounded corners */
+            display: block; /* Ensures the budget-display is treated as block */
         }
     </style>
 </head>
@@ -80,9 +99,12 @@
     <h1>Budget vs Studio Time</h1>
 
     <div class="slider-container">
+        <div class="budget-display">
+            <span id="budgetValue">£500</span>
+        </div>
         <label for="budget">Budget Allowance: </label>
         <input type="range" id="budget" min="0" max="10000" step="10" value="500" oninput="updateChart()" />
-        <span id="budgetValue">500</span>
+        
     </div>
 
     <div class="chart-container">
