@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget vs Studio Time</title>
+    <link href="https://fonts.googleapis.com/css2?family=Metropolis:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            background-color: #333;
+            color: #F7F7F7;
+            font-family: 'Metropolis', sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 100px;
+            margin-bottom: 60px;
+        }
+
+        .chart-container {
+            display: flex;
+            justify-content: center; 
+            align-items: center;      
+            flex-direction: column;   
+            padding: 20px;           
+            width: 100%;    
+            max-width: 800px;  
+            margin: auto;    
+        }
+
+        #myChart {
+            width: 100%;         
+            height: 300px;      
+        }
+
+        .slider-container {
+            text-align: center;
+            margin: 40px;
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 300px;
+            height: 10px;
+            background: #505050;
+            border-radius: 5px;
+            outline: none;
+            transition: background 0.3s ease;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #009159;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: #009159;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        #totalDays {
+            text-align: center;
+            color: #F7F7F7;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Budget vs Studio Time</h1>
+
+    <div class="slider-container">
+        <label for="budget">Budget Allowance: </label>
+        <input type="range" id="budget" min="0" max="10000" step="10" value="500" oninput="updateChart()" />
+        <span id="budgetValue">500</span>
+    </div>
+
+    <div class="chart-container">
+        <canvas id="myChart"></canvas>
+    </div>
+    
+    <div id="totalDays">
+        Total Days: <span id="daysValue">0</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
