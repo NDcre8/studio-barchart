@@ -11,7 +11,6 @@ let currentDataPoints = [0, 0, 0, 0];
 function fetchData() {
     const budgetValue = parseInt(document.getElementById('budget').value);
     const totalHours = budgetValue / hourlyRate; // Calculate total hours based on budget
-    
     const totalDays = Math.min(Math.ceil(totalHours / 8), 35); // Convert hours to days, max 35 days
 
     // Update the total days display
@@ -119,16 +118,30 @@ function createChart(data) {
 // Update the displayed budget value
 function updateBudgetValue() {
     const budgetValue = document.getElementById('budget').value;
-    document.getElementById('budgetValue').textContent = budgetValue; 
+    document.getElementById('budgetValue').textContent = `£${budgetValue}`;
+}
+
+// Update the slider background color
+function updateSliderBackground() {
+    const rangeInput = document.getElementById('budget');
+    const max = rangeInput.max;
+    const min = rangeInput.min;
+    const value = rangeInput.value;
+    const percentage = (value - min) / (max - min) * 100; // Calculate percentage
+
+    // Update background gradient
+    rangeInput.style.background = `linear-gradient(to right, #B4E2A5 ${percentage}%, #505050 ${percentage}%)`; // Green for filled part, gray for unfilled part
 }
 
 // Update the chart when the slider value changes
 function updateChart() {
     updateBudgetValue();
     const data = fetchData();
-    createChart(data); 
+    createChart(data);
+    updateSliderBackground(); // Call to update slider background
 }
 
 // Initialize the chart and budget value on page load
 updateBudgetValue();
 updateChart();
+updateSliderBackground(); // Initial slider background update
