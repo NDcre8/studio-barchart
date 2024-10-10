@@ -130,7 +130,7 @@ function updateSliderBackground() {
     const percentage = (value - min) / (max - min) * 100; // Calculate percentage
 
     // Update background gradient
-    rangeInput.style.background = `linear-gradient(to right, #B4E2A5 ${percentage}%, #505050 ${percentage}%)`; // Green for filled part, gray for unfilled part
+    rangeInput.style.background = `linear-gradient(to right, #66BD9B ${percentage}%, #505050 ${percentage}%)`; // Green for filled part, gray for unfilled part
 }
 
 // Update the chart when the slider value changes
