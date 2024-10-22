@@ -2,7 +2,7 @@ const ctx = document.getElementById('myChart').getContext('2d');
 let myChart;
 
 // Define the hourly rate for the designers
-const hourlyRate = 40; // Updated hourly rate
+const hourlyRate = 74; // Updated hourly rate
 
 // Initialize data variables to persist across updates
 let currentDataPoints = [0, 0, 0, 0];
